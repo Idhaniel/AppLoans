@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .invisible-menu {
+            display: none !important;
+        }
+
+        body {
+            padding-top: 20px;
+        }
+
+        .menu-link, .subMenuToggler {
+            position: relative;
+        }
+
+        .menu-link > span:nth-child(2), .subMenuToggler > span:nth-child(2) {
+            display: block;
+            float: right;
+            width: calc(100% - 27px);
+            top: 0px;
+        }
+
+        div.submenu button {
+            width: 100%;
+        }
+    </style>
+    <script>
+        //var searchstring = "";
+        var currenttopmenuid;
+        function closeHamburgerIfMobile() {
+            self.top.closeHamburgerIfMobile();
+        }
+        function getMaxMenuColumnCount() {
+
+            //reasonable number of columns depending on screen size
+            let columncount = 5;
+            if (screen.width <= 500) {
+                columncount = 1;
+            }
+            else if (screen.width <= 1000) {
+                columncount = 2;
+            }
+            else if (screen.width <= 1500) {
+                columncount = 3;
+            }
+            else if (screen.width <= 2000) {
+                columncount = 4;
+            }
+            return columncount;
+        }
+
+        function findAppropriateMenuColumnCount(topmenuid) {
+            //debugger;
+            let navflyout = document.getElementById('nav-flyout');
+            let menudiv = document.querySelector('.nav-flyout > div[menu-flyout-for="' + topmenuid + '"]');
+            let menucontentdiv = document.querySelector('.nav-flyout > div[menu-flyout-for="' + topmenuid + '"] > .nav-flyout-content');
+            let searchdiv = document.querySelector('.nav-flyout > div[menu-flyout-for="' + topmenuid + '"] > .nav-flyout-search');
+
+            let maxcolumncount = getMaxMenuColumnCount();
+
+            for (let i = 1; i <= maxcolumncount; i++) {
+                $(menucontentdiv).css('column-count', i);
+                //debugger;
+                //if the contents are shorter than the container for the entire menu flyout, then we have found a good column count
+                //we will stop at the maximum column count
+                if ($(menucontentdiv).outerHeight() + $(searchdiv).outerHeight() <= $('body').innerHeight()) {
+                    break;
+                }
+                //check if the flyout has to scroll
+                //if it does, continue to the next one
+            }
+        }
+
+        function display(topmenuid) {
+            $('#nav-flyout').css('display', 'block');
+            $('.nav-flyout > div').css('display', 'none');
+            //debugger;
+            $('.nav-flyout > div[menu-flyout-for="' + topmenuid + '"]').css('display', 'block');
+
+            findAppropriateMenuColumnCount(topmenuid);
+            currenttopmenuid = topmenuid;
+        }
+
+        function populateMenu(menu) {
+            //debugger;
+            let menudiv = document.getElementById("nav-flyout");
+
+            for (let x = 0; x < menu.length; x++) {
+                let childMenuItem = menu[x];
+                let subMenu = getMenuItem(childMenuItem, 1);
+                menudiv.appendChild(subMenu);
+
+                //navdiv.appendChild(subdiv);
+            }
+            //operation();
+            //menuHider();
+            //menuToggler();
+            //searchToggler();
+            subMenuToggler();
+        }
+
+        function setchildrenVisibility(menuItem, searchstring) {
+
+
+            if (searchstring) {
+
+
+                for (let i = 0; i < menuItem.children.length; i++) {
+                    let childMenuItem = menuItem.children[i];
+
+                    let visible = false;
+
+                    if (childMenuItem.caption.toLowerCase().includes(searchstring.toLowerCase())) {
+                        visible = true;
+                        //let submenu = document.querySelector('.submenu-inner[]')
+                    }
+
+                    let actualitem = document.getElementById(childMenuItem.id);
+
+                    if (visible) {
+                        //then everything under it should be visible and we shouldn't bother with the downward recursion anymore
+
+                        if (actualitem) {
+                            $(actualitem).removeClass('invisible-menu');
+                        }
+
+                        $('[id="' + childMenuItem.id + '"] + div .menu-link').removeClass('invisible-menu');
+                        $('[id="' + childMenuItem.id + '"] + div .subMenuToggler').removeClass('invisible-menu');
+                    }
+                    else {
+                        //if not visible, we should conitnue the recursion
+                        //if anything below is visible, then this must be set to visible
+
+                        setchildrenVisibility(childMenuItem, searchstring);
+
+                        //debugger;
+
+                        //if (actualitem) {
+                        let anyvisibleinnermenulink = document.querySelector('[id="' + childMenuItem.id + '"] + div .menu-link:not(.invisible-menu)');
+                        let anyvisibleinnersubmenutoggler = document.querySelector('[id="' + childMenuItem.id + '"] + div .subMenuToggler:not(.invisible-menu)');
+
+                        if (actualitem) {
+                            if (anyvisibleinnermenulink || anyvisibleinnersubmenutoggler) {
+                                $(actualitem).removeClass('invisible-menu');
+                            }
+                            else {
+                                $(actualitem).addClass('invisible-menu');
+                            }
+                        }
+                        //}
+                    }
+
+                    //let actualitem = document.getElementById(childMenuItem.id);
+                    //if (actualitem) {
+                    //    $(actualitem).removeClass('invisible-menu');
+                    //}
+                }
+            }
+            else {
+                //$('.menu-link, .subMenuToggler').removeClass('invisible-menu');
+                //debugger;
+                $('div[menu-flyout-for="' + menuItem.id + '"] .menu-link').removeClass('invisible-menu');
+                $('div[menu-flyout-for="' + menuItem.id + '"] .subMenuToggler').removeClass('invisible-menu');
+                //$('submenu-inner').css('display', 'unset');
+            }
+        }
+
+        function getMenuItem(menuItem, level) {
+            //<li id="bursary"><a role="button" href="#"><span><i class="fa fa-random"></i></span>recently used</a></li>
+            //<li id="bursary"><a role="button" href="#"><span><i class="fa fa-database"></i></span>dashboard</a></li>
+            //<li id="bursary"><a class="menuToggler" menuElement="nav-flyout" role="button" href="#"><span><i class="fa fa-briefcase"></i></span>bursary manager</a></li>
+
+
+            //           <h3 class="subMenuToggler" menuElement='bank'><span><i id="bank-ico" class="fa fa-caret-down fa-lg"></i></span>Bank</h3>
+            //           <div id="bank" class="submenu" style="display:block">
+            //               <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            //               <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            //               <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            //               <button class="subMenuToggler" menuElement='operationsub'><span><i class="fa fa-files-o"></i></span>bank report</button>
+            //               <h5 class="subMenuToggler" menuElement='operationsub'><span><i id="operationsub-ico" class="fa fa-caret-right fa-lg"></i></span>Bank Report</h5>
+            //               <div class="operation-submenu-btn" id="operationsub" style="display: none">
+            //                   <button><span><i class="fa fa-files-o"></i></span>budget total sugested</button>
+            //                   <button><span><i class="fa fa-gg"></i></span>revenue collections</button>
+            //                   <button><span><i class="fa fa-files-o"></i></span>revenue collections</button>
+            //               </div><!-- end operation-submenu-btn div here -->
+            //		      </div>
+            if (menuItem == null) {
+                debugger;
+            }
+            //if ((menuItem.children == null || menuItem.children.length == 0) && searchstring && !menuItem.caption.toLowerCase().includes(searchstring.toLowerCase())) {
+            //    return null;
+            //}
+
+            if (level == 1) {
+                let div;
+                //debugger;
+
+                div = document.createElement("div");
+                div.setAttribute("level", level);
+                div.setAttribute('menu-flyout-for', menuItem.id);
+                $(div).css('display', 'none');
+
+                //<div class="nav-flyout-search">
+                //    <div class="menu-search">
+                //        <input type="text" placeholder="Search...">
+                //        <span><i class="fa fa-search"></i></span>
+                //    </div>
+                //</div>
+
+                let searchdiv = document.createElement('div');
+                searchdiv.setAttribute('class', 'nav-flyout-search');
+
+                let searchsubdiv = document.createElement('div');
+                searchsubdiv.setAttribute('class', 'menu-search');
+
+                let searchinput = document.createElement('input');
+                searchinput.setAttribute('type', 'text');
+                searchinput.setAttribute('placeholder', 'Search...');
+                searchinput.setAttribute('searchfor', menuItem.id);
+                //if (searchstring) {
+                //    searchinput.value = searchstring;
+                //}
+                searchinput.addEventListener('keyup', function () {
+                    //debugger;
+                    //let thiselement = this;
+                    //let menudiv = document.getElementById("nav-flyout");
+                    //let flyout = menudiv.querySelector('[menu-flyout-for="' + menuItem.id + '"]');
+
+                    //flyout.remove();
+                    //let newflyout = getMenuItem(menuItem, 1, this.value);
+                    //menudiv.appendChild(newflyout);
+
+                    //display(menuItem.id);
+
+                    //setTimeout(function () {
+                    //    thiselement.focus();
+                    //});
+
+                    //let menucontentdiv = document.querySelector('.nav-flyout > div[menu-flyout-for="' + menuItem.id + '"] > .nav-flyout-content');
+                    //menucontentdiv.remove();
+
+                    //getMenuItem(menuItem, 1, this.value);
+                    //findAppropriateMenuColumnCount(menuItem.id);
+                    //debugger;
+                    //$('#' + this.getAttribute('searchfor') + ' .menu-link').addClass('invisible-menu');
+                    //$('#' + this.getAttribute('searchfor') + ' .subMenuToggler').addClass('invisible-menu');
+                    $('div[menu-flyout-for="' + menuItem.id + '"] .menu-link').addClass('invisible-menu');
+                    $('div[menu-flyout-for="' + menuItem.id + '"] .subMenuToggler').addClass('invisible-menu');
+                    //$('submenu-inner').css('display', 'none');
+
+                    setchildrenVisibility(menuItem, this.value);
+
+                    findAppropriateMenuColumnCount(currenttopmenuid);
+
+                });
+
+                let searchiconspan = document.createElement('span');
+                let searchicon = document.createElement('i');
+                searchicon.setAttribute('class', 'fa fa-search');
+
+                searchdiv.appendChild(searchsubdiv);
+                searchsubdiv.appendChild(searchinput);
+                searchsubdiv.appendChild(searchiconspan);
+                searchiconspan.appendChild(searchicon);
+
+                div.appendChild(searchdiv);
+
+                let menucontentdiv = document.createElement('div');
+                menucontentdiv.setAttribute('class', 'nav-flyout-content');
+
+                let subdiv = document.createElement('div');
+                subdiv.setAttribute('submenufor', menuItem.id);
+                subdiv.setAttribute('class', 'submenu');
+                //$(subdiv).css('display', 'none');
+
+                if (menuItem.children.length > 0) {
+                    //populateMenu(menuItem.children, subdiv, level + 1);
+                    for (let x = 0; x < menuItem.children.length; x++) {
+                        let childMenuItem = menuItem.children[x];
+                        let subMenu = getMenuItem(childMenuItem, level + 1);
+                        subdiv.appendChild(subMenu);
+                    }
+                }
+
+                menucontentdiv.appendChild(subdiv);
+
+                div.appendChild(menucontentdiv);
+
+                return div;
+            }
+            else {
+                if (menuItem.children.length == 0) {
+                    //<button><span><i class="fa fa-wpforms"></i></span><span>bank account balances</span></button>
+                    let menuItemButton = document.createElement('button');
+
+                    //if (menuItem.hasAction) {
+                    //    menuItemButton.setAttribute("class", "menu-link");
+                    //}
+                    menuItemButton.setAttribute("class", "menu-link");
+
+                    menuItemButton.setAttribute("id", menuItem.id);
+                    let menuItemButtonSpan = document.createElement('span');
+                    let menuItemButtonSpanI = document.createElement('i');
+
+                    menuItemButtonSpanI.setAttribute('class', menuItem.class);
+
+                    let menuItemButtonSpan2 = document.createElement('span');
+                    menuItemButtonSpan2.innerText = menuItem.caption;
+
+                    menuItemButton.appendChild(menuItemButtonSpan);
+                    menuItemButtonSpan.appendChild(menuItemButtonSpanI);
+                    menuItemButton.appendChild(menuItemButtonSpan2);
+
+                    return menuItemButton;
+                }
+                else {
+                    //<h3 class="subMenuToggler" menuElement='bank'><span><i class="fa fa-caret-down fa-lg"></i></span>Bank</h3>
+                    //OR
+                    //<h5 class="subMenuToggler" menuElement='bank'><span><i class="fa fa-caret-right fa-lg"></i></span>Bank Report</h5>
+                    let header = document.createElement(level == 2 ? 'h3' : 'h3');
+                    header.setAttribute('id', menuItem.id);
+                    header.setAttribute('class', 'subMenuToggler');
+                    header.setAttribute('menuElement', menuItem.listid);
+
+                    let span = document.createElement('span');
+                    let i = document.createElement('i');
+                    i.setAttribute('class', level == 2 ? 'fa fa-caret-down fa-lg' : 'fa fa-caret-down fa-lg');
+                    i.setAttribute('id', menuItem.listid + '-ico');
+
+                    let span2 = document.createElement('span');
+                    span2.innerText = menuItem.caption;
+
+                    header.appendChild(span);
+                    span.appendChild(i);
+
+                    header.appendChild(span2);
+
+
+                    let surroundingdiv = document.createElement('div');
+                    surroundingdiv.setAttribute('class', 'submenu');
+
+                    let subdiv = document.createElement('div');
+                    subdiv.setAttribute('id', menuItem.listid);
+                    subdiv.setAttribute('class', 'submenu-inner');
+
+                    surroundingdiv.appendChild(header);
+
+                    for (let x = 0; x < menuItem.children.length; x++) {
+                        let childMenuItem = menuItem.children[x];
+                        let subMenu = getMenuItem(childMenuItem, level + 1);
+                        subdiv.appendChild(subMenu);
+                    }
+
+                    surroundingdiv.appendChild(subdiv);
+
+                    return surroundingdiv;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="nav-flyout" class="overlayMenu nav-flyout">
+    </div>
+    <script src="/js/formalScript.js"></script>
+    <script>
+        window.addEventListener("resize", function () {
+            if (currenttopmenuid) {
+                findAppropriateMenuColumnCount(currenttopmenuid);
+            }
+        });
+    </script>
+</body>
+</html>

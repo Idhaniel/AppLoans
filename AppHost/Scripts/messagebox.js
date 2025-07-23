@@ -1,0 +1,10 @@
+﻿let iframeid = self.frameElement.id;
+let controlsdiv = self.top.document.querySelector('.controlsdiv[iframeid="' + iframeid + '"]');
+let iframecontainersubdiv = self.top.document.querySelector('.iframecontainersubdiv[iframeid="' + iframeid + '"]');
+$(controlsdiv).css("margin-left", 0);
+$(iframecontainersubdiv).css("width", "60%");
+$(iframecontainersubdiv).css("height", "auto");
+$(iframecontainersubdiv).css("position", "absolute");
+$(iframecontainersubdiv).css("left", "20%");
+$(iframecontainersubdiv).css("top", "20%");
+$(iframecontainersubdiv).css("border-style", "solid");

@@ -1,0 +1,17 @@
+﻿#container {
+    display: flex;
+    flex-direction: column;
+    height:98%;
+    width:100%
+}
+
+#operationsdiv {
+    flex: 0 1 auto;
+}
+
+#fieldgroupdiv {
+    flex: 1 1 auto;
+    overflow:auto;
+    border-style: inset;
+    /*height: 100%;*/
+}

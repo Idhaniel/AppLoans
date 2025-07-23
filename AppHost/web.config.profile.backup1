@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  For more information on how to configure your ASP.NET application, please visit
+  https://go.microsoft.com/fwlink/?LinkId=301880
+  --><configuration>
+  <appSettings>
+    <add key="webpages:Version" value="3.0.0.0"/>
+    <add key="webpages:Enabled" value="false"/>
+    <add key="ClientValidationEnabled" value="true"/>
+    <add key="UnobtrusiveJavaScriptEnabled" value="true"/>
+    <add key="DatabaseParameters" value="localhost,unilag,root,"/>
+    <add key="DatabaseHandlerTypeName" value="AppFramework.AppClasses.MySqlClientSideDatabaseHandler"/>
+    <add key="MainAssemblyLocation" value="D:\Documents\Visual Studio Projects\AppFramework2.0\AppEntities\bin\Debug\AppEntities.dll"/>
+    <add key="FileServerLocation" value="D:\Documents\Visual Studio Projects\AppFramework2.0\AppEntities"/>
+    <add key="ApplicationPortRange" value="8888,"/>
+    <add key="ApplicationLocation" value="D:\Documents\Visual Studio Projects\AppFramework2.0\App\bin\Debug\App.exe"/>
+    <add key="ApplicationName" value="Test App"/>
+    <add key="AntiForgerySalt" value=""/>
+    <add key="StartApplicationOnLogin" value="false"/>
+  
+	<add key="Microsoft.VisualStudio.Enterprise.AspNetHelper.VsInstrLocation" value="D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Team Tools\Performance Tools\vsinstr.exe"/>
+	</appSettings>
+  <!--
+    For a description of web.config changes see http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    The following attributes can be set on the <httpRuntime> tag.
+      <system.Web>
+        <httpRuntime targetFramework="4.6" />
+      </system.Web>
+  -->
+  <system.web>
+    <compilation debug="true" targetFramework="4.6.1" assemblyPostProcessorType="Microsoft.VisualStudio.Enterprise.Common.AspPerformanceInstrumenter, Microsoft.VisualStudio.Enterprise.AspNetHelper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <buildProviders>
+        <add extension=".rdlc" type="Microsoft.Reporting.RdlBuildProvider, Microsoft.ReportViewer.WebForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"/>
+      </buildProviders>
+      <assemblies>
+        <add assembly="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"/>
+        <add assembly="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"/>
+        <add assembly="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"/>
+        <add assembly="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"/>
+        <add assembly="Microsoft.ReportViewer.WebDesign, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"/>
+        <add assembly="Microsoft.ReportViewer.WebForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"/>
+        <add assembly="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"/>
+      </assemblies>
+    </compilation>
+    <httpRuntime targetFramework="4.6"/>
+    <httpModules>
+      <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web"/>
+    </httpModules>
+    <httpHandlers>
+      <add verb="*" path="Reserved.ReportViewerWebControl.axd" type="Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" validate="false"/>
+      <!--<add path="Reserved.ReportViewerWebControl.axd" verb="*"
+        type="Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"
+        validate="false"/>-->
+    </httpHandlers>
+  </system.web>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+			<dependentAssembly>
+				<assemblyIdentity name="Microsoft.Build.Framework" publicKeyToken="B03F5F7F11D50A3A" culture="neutral"/>
+				<bindingRedirect oldVersion="0.0.0.0-14.0.0.0" newVersion="14.0.0.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="Microsoft.VisualStudio.GraphModel" publicKeyToken="B03F5F7F11D50A3A" culture="neutral"/>
+				<bindingRedirect oldVersion="0.0.0.0-14.0.0.0" newVersion="14.0.0.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="EnvDTE" publicKeyToken="B03F5F7F11D50A3A" culture="neutral"/>
+				<bindingRedirect oldVersion="0.0.0.0-8.0.0.0" newVersion="8.0.0.0"/>
+			</dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" culture="neutral" publicKeyToken="30ad4fe6b2a6aeed"/>
+        <bindingRedirect oldVersion="0.0.0.0-10.0.0.0" newVersion="10.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Optimization" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="1.1.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-5.2.3.0" newVersion="5.2.3.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.SqlServer.Types" publicKeyToken="89845dcd8080cc91" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-14.0.0.0" newVersion="14.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.ReportViewer.WebForms" publicKeyToken="89845dcd8080cc91" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-14.0.0.0" newVersion="14.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.ReportViewer.Common" publicKeyToken="89845dcd8080cc91" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-14.0.0.0" newVersion="14.0.0.0"/>
+      </dependentAssembly>
+    
+			<dependentAssembly>
+				<assemblyIdentity name="Microsoft.VisualStudio.Enterprise.AspNetHelper" publicKeyToken="b03f5f7f11d50a3a" culture="neutral"/>
+				<codeBase version="15.0.0.0" href="file:///C:/Program%20Files%20(x86)/Microsoft%20Visual%20Studio/Shared/Common/VSPerfCollectionTools/Microsoft.VisualStudio.Enterprise.AspNetHelper.DLL"/></dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="VsWebSite.Interop" publicKeyToken="b03f5f7f11d50a3a" culture="neutral"/>
+				<codeBase version="8.0.0.0" href="file:///C:/Program%20Files%20(x86)/Microsoft%20Visual%20Studio/Shared/Common/VSPerfCollectionTools/VsWebSite.Interop.DLL"/></dependentAssembly></assemblyBinding>
+  </runtime>
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false"/>
+    <modules>
+      <remove name="ApplicationInsightsWebTracking"/>
+      <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler"/>
+    </modules>
+    <handlers>
+      <add name="ReportViewerWebControlHandler" preCondition="integratedMode" verb="*" path="Reserved.ReportViewerWebControl.axd" type="Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"/>
+    </handlers>
+  </system.webServer>
+  <system.codedom>
+    <compilers>
+      <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701"/>
+      <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+"/>
+    </compilers>
+  </system.codedom>
+</configuration>

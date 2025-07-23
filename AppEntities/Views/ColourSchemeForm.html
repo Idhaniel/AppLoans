@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function getColors() {
+            let colorVariables = {};
+
+            let colorinputs = document.querySelectorAll('input[type="color"]');
+
+            for (let i = 0; i < colorinputs.length; i++) {
+                let input = colorinputs[i];
+                colorVariables[input.id] = input.value;
+            }
+
+            return colorVariables;
+        }
+
+        function applyColors(colorVariables) {
+            //debugger;
+
+            //let colorVariables = getColors();
+            self.top.colorVariables = colorVariables;
+            self.top.setColorVariables();
+
+            let iframes = self.top.document.getElementsByTagName('iframe');
+
+            for (let i = 0; i < iframes.length; i++) {
+                let iframe = iframes[i];
+                if (typeof (iframe.contentDocument.setColorVariables) === 'function') {
+                    iframe.contentDocument.setColorVariables();
+                }
+            }
+        }
+
+        function resetColors() {
+            //self.top.colorVariables = self.top.colorVariablesAtStart;
+            loadColors(self.top.colorVariablesAtStart);
+            applyColors(self.top.colorVariablesAtStart);
+        }
+
+        function saveColors() {
+            let colorVariables = getColors();
+            
+            callFormMethod("saveColors", [colorVariables], function () {
+                applyColors(colorVariables);
+            });
+        }
+
+        function resetToDefaultColors() {
+            loadColors(self.top.defaultColorVariables);
+            applyColors(self.top.defaultColorVariables);
+        }
+
+        function loadColors(colorVariables) {
+            //let colorVariables = self.top.colorVariables;
+            let keys = Object.keys(colorVariables);
+
+
+            let colorstable = document.getElementById('colorstable');
+            let colorstbody = document.getElementById('colorstbody');
+
+            clearChildNodes(colorstbody);
+
+            for (let i = 0; i < keys.length; i++) {
+                let key = keys[i];
+                let name = key.replace("--", " ").replace(/-/g, " ");
+                let value = colorVariables[key];
+
+                let tr = document.createElement('tr');
+                let labeltd = document.createElement('td');
+                labeltd.setAttribute('class', 'labeltd');
+                let inputtd = document.createElement('td');
+                inputtd.setAttribute('class', 'inputtd');
+
+                labeltd.innerText = name;
+                
+                let input = document.createElement('input');
+                input.setAttribute('type', 'color');
+                input.setAttribute('id', key);
+                input.setAttribute('value', value);
+                inputtd.appendChild(input);
+
+                tr.appendChild(labeltd);
+                tr.appendChild(inputtd);
+
+                colorstbody.appendChild(tr);
+            }
+        }
+
+        document.addEventListener("loaded", function () {
+            loadColors(self.top.colorVariables);
+        });
+        
+    </script>
+    <style>
+        #colorstable {
+            margin-top:10px
+        }
+
+        table, tr, td, th {
+            border-style:solid;
+            border-width:1px;
+        }
+        td, th {
+            padding:5px !important;
+        }
+
+        /*.inputdiv, .labeldiv {
+            display:inline-block
+        }*/
+
+        .labeltd {
+            text-transform:capitalize;
+            /*margin-right:10px;*/
+        }
+
+        /*.colordiv {
+            padding:5px
+        }*/
+        #buttonsdiv {
+            margin:5px;
+            margin-left: 0px;
+        }
+
+        #buttonsdiv > button {
+            margin:5px;
+        }
+
+        #applybutton {
+            margin-left:0px !important
+        }
+    </style>
+</head>
+<body class="colorschemeform">
+    <table id="colorstable">
+        <thead>
+            <tr><th>Name</th><th>Color</th></tr>
+        </thead>
+        <tbody id="colorstbody">
+
+        </tbody>
+        <!--<div><div class="labeldiv"><label>Primary Background Colour</label></div><div class="inputdiv"><input type="color" id="primary-background-color" /></div></div>-->
+        
+    </table>
+    <div id="buttonsdiv">
+        <button id="applybutton" onclick="applyColors(getColors())">Apply</button>
+        <button id="savebutton" onclick="saveColors()">Save</button>
+        <button id="resetbutton" onclick="resetColors()">Reset</button>
+        <button id="resettodefaultbutton" onclick="resetToDefaultColors()">Reset To Default</button>
+    </div>
+</body>
+</html>

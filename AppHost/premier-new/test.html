@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premier</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+
+  <!-- font links -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
+  <!-- font awesome link -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <style type="text/css">
+    body {
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body>
+  <!-- start header session here -->
+  <header>
+    <div id="header-left">
+      <a href="#" id="desktop-menu"><i class="fa fa-bars menuToggler adjustParentContainerWidth" menuElement='content-left'></i></a>
+      <a href="#" id="mobile-menu"><i class="fa fa-bars menuToggler" menuElement='content-left2'></i></a>
+      <h1>premierERP<sup>&reg;</sup></h1>
+    </div><!-- end header left div -->
+    <div id="header-right">
+      <div id="profile-settings">
+        <p>chiamaka eboagu<span class="drop-down-btn"><i class="menuToggler fa fa-angle-down" menuElement='profile-drop-down'></i></span></p>
+        <div id="profile-drop-down" class="overlayMenu" style="display: none;">
+          <ul>
+            <li><a href="#"><i class="fa fa-gear"></i>change password</a></li>
+            <li><a href="#"><i class="fa fa-clone"></i>change colour scheme</a></li>
+            <li><a href="#"><i class="fa fa-eraser"></i>clear cookies</a></li>
+            <li><a href="#"><i class="fa fa-power-off"></i>logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="notification">
+        <div id="notify-btn">
+          <i class="fa fa-bell menuToggler" menuElement='notification-details'></i>
+          <span class="notify-count menuToggler" menuElement='notification-details'>9+</span>
+        </div>
+        <div id="notification-details" class="overlayMenu" style="display: none;">
+          <div class="notification-heading">
+            <div class="notification-heading-left">
+              <button>Mark all Read</button> |
+              <button>Mark all unread</button>
+            </div>
+            <div class="notification-heading-right">
+              <button><span><i class="fa fa-trash"></i></span>Delete all</button>
+            </div>
+          </div><!-- end notification heading here -->
+          <div class="notify-box-wrapper">
+            <div class="notify-checkbox">
+              <input type="checkbox">
+            </div>
+            <div class="notification-row1" class="new-alert">
+              <div id="hidden">
+                <i class="subMenuToggler fa fa-ellipsis-h" menuElement='checked'></i>
+              </div>
+              <div id="checked" class="overlayMenu" style="display: none">
+                <button>Mark as Read</button>
+                <button>Delete</button>
+              </div><!-- end checked div here -->
+              <a href="#" class="checked-link">
+                <h4>payment failed</h4>
+                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+              </a>
+            </div>
+          </div><!-- end notify-box-wrapper here -->
+          <div class="notify-box-wrapper">
+            <div class="notify-checkbox">
+              <input type="checkbox">
+            </div>
+            <div class="notification-row">
+              <div id="hidden">
+                <i class="subMenuToggler fa fa-ellipsis-h" menuElement='checked2'></i>
+              </div>
+              <div id="checked2" style="display: none">
+                <button>Mark as Read</button>
+                <button>Delete</button>
+              </div><!-- end checked div here -->
+              <a href="#" class="checked-link">
+                <h4 class="notify-title">payment failed</h4>
+                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+              </a>
+            </div>
+          </div><!-- end notify-box-wrapper here -->
+          <div class="notify-box-wrapper">
+            <div class="notify-checkbox">
+              <input type="checkbox">
+            </div>
+            <div class="notification-row">
+              <div id="hidden">
+                <i class="subMenuToggler fa fa-ellipsis-h" menuElement='checked3'></i>
+              </div>
+              <div id="checked3" style="display: none">
+                <button>Mark as Read</button>
+                <button>Delete</button>
+              </div><!-- end checked div here -->
+              <a href="#" class="checked-link">
+                <h4>payment failed</h4>
+                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+              </a>
+            </div>
+          </div><!-- end notify-box-wrapper here -->
+          <div class="notification-footer">
+            <p><a href="#">View all messages</a></p>
+          </div>
+        </div><!-- end notification details here -->
+      </div><!-- end notification div here -->
+      <div id="company-name">
+        <h1>unilag<i class="fa fa-angle-down menuToggler" menuElement='company-list'></i></h1>
+        <div id="company-list" class="overlayMenu" style="display: none">
+          <ul>
+            <li><a href="#">unilag</a></li>
+            <li><a href="#">ulws</a></li>
+            <li><a href="#">hrdc</a></li>
+            <li><a href="#">dli</a></li>
+            <li><a href="#">uc</a></li>
+            <li><a href="#">isl</a></li>
+            <li><a href="#">cmul</a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- end header-right div -->
+  </header>
+  <!-- end header session here -->
+  <!-- content session start here -->
+  <div id="content">
+    <div id="content-left" class="content-left">
+      <!-- nav section starts here -->
+      <div id="nav">
+        <ul>
+          <li><a role="button" href="#"><span><i class="fa fa-random"></i></span>recently used</a></li>
+          <li><a role="buttton" href="#"><span><i class="fa fa-database"></i></span>dashboard</a></li>
+          <li id="bursary"><a class="menuToggler" menuElement='nav-flyout' role="button" href="#"><span><i class="fa fa-briefcase"></i></span>bursary manager</a></li>
+          <li class="navdropdown"><a role="button" href="#"><span><i class="fa fa-users"></i></span>election</a>
+            <ul id="navitems2" style="display: none">
+              <li><a role="button" href="#>"><i class="fa fa-folder"></i>elections</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>positions</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>student election application</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>voters</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-user"></i></span>human resources</a>
+            <ul id="navitems3" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file"></i>job applicants</a></li>
+              <li><a role="button" href="#">
+                <i class="fa fa-file"></i>salary advance applications</a>
+              </li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>staff</a></li>
+              <li><a role="button" href="#"><i class="fa fa-gear"></i>staff birthday messages</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>vacancies</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>periodic</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>reports</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>setup</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-list-alt"></i></span>memo</a>
+            <ul id="navitems4" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file"></i>create memo</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>external sources</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>memo delegates</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>memo recipient groups</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>position colour code</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>received memos</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>sent memos</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-outdent"></i></span>procurement</a>
+            <ul id="navitems5" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file"></i>procurement</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>procurement qualification criteria</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#"><span><i class="fa fa-university"></i></span>school administration</a>
+            <ul id="navitems6" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>alumni</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>records office</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>school</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-gear"></i></span>set up</a>
+            <ul id="navitems7" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file"></i>financial department</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>geographical zones</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>states</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>users</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>web form</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-recycle"></i></span>system</a>
+            <ul id="navitems8" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file-pdf-o"></i>adhoc chart</li>
+              <li><a role="button" href="#"><i class="fa fa-file-pdf-o"></i>adhoc report</li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>branches</li>
+              <li><a role="button" href="#"><i class="fa fa-gear"></i>change company</li>
+              <li><a role="button" href="#">
+                <i class="fa fa-gear"></i>create default record security queries and groups</a></li>
+              <li><a role="button" href="#"><i class="fa fa-gear"></i>data import</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>database</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>entity browser</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>license</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>number sequences</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>permisssion groups</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>queries</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>runnable permissions</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>saved reports</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>users</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- end nav div here -->
+      <!-- nav section ends here -->
+    </div><!-- end content-left here -->
+
+    <!-- start mobile menu here @ 900px using media query -->
+    <div id="content-left2" style="display: none;">
+      <!-- nav section starts here -->
+      <div id="nav">
+        <ul>
+          <li><a role="button" href="#"><span><i class="fa fa-random"></i></span>recently used</a></li>
+          <li><a role="buttton" href="#"><span><i class="fa fa-database"></i></span>dashboard</a></li>
+          <li id="bursary"><a class="menuToggler" menuElement='nav-flyout' role="button" href="#"><span><i class="fa fa-briefcase"></i></span>bursary manager</a></li>
+          <li class="navdropdown"><a role="button" href="#"><span><i class="fa fa-users"></i></span>election</a>
+            <ul id="navitems2" style="display: none">
+              <li><a role="button" href="#>"><i class="fa fa-folder"></i>elections</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>positions</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>student election application</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>voters</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-user"></i></span>human resources</a>
+            <ul id="navitems3" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file"></i>job applicants</a></li>
+              <li><a role="button" href="#">
+                <i class="fa fa-file"></i>salary advance applications</a>
+              </li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>staff</a></li>
+              <li><a role="button" href="#"><i class="fa fa-gear"></i>staff birthday messages</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>vacancies</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>periodic</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>reports</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>setup</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-list-alt"></i></span>memo</a>
+            <ul id="navitems4" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file"></i>create memo</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>external sources</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>memo delegates</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>memo recipient groups</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>position colour code</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>received memos</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>sent memos</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-outdent"></i></span>procurement</a>
+            <ul id="navitems5" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file"></i>procurement</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>procurement qualification criteria</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#"><span><i class="fa fa-university"></i></span>school administration</a>
+            <ul id="navitems6" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>alumni</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>records office</a></li>
+              <li><a role="button" href="#"><i class="fa fa-folder"></i>school</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-gear"></i></span>set up</a>
+            <ul id="navitems7" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file"></i>financial department</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>geographical zones</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>states</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>users</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>web form</a></li>
+            </ul>
+          </li>
+          <li class="navdropdown"><a role="button" href="#">
+            <span><i class="fa fa-recycle"></i></span>system</a>
+            <ul id="navitems8" style="display: none;">
+              <li><a role="button" href="#"><i class="fa fa-file-pdf-o"></i>adhoc chart</li>
+              <li><a role="button" href="#"><i class="fa fa-file-pdf-o"></i>adhoc report</li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>branches</li>
+              <li><a role="button" href="#"><i class="fa fa-gear"></i>change company</li>
+              <li><a role="button" href="#">
+                <i class="fa fa-gear"></i>create default record security queries and groups</a></li>
+              <li><a role="button" href="#"><i class="fa fa-gear"></i>data import</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>database</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>entity browser</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>license</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>number sequences</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>permisssion groups</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>queries</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>runnable permissions</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>saved reports</a></li>
+              <li><a role="button" href="#"><i class="fa fa-file"></i>users</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- nav section ends here -->
+    </div>
+    <!-- end mobile menu here @ 900px using media query -->
+
+    <div class="content-right">
+      <div id="nav-flyout" class="overlayMenu nav-flyout" style="display: none;">
+        <div class="nav-flyout-search">
+          <div class="search">
+            <form>
+              <input type="text" placeholder="Search...">
+              <span><i class="fa fa-search"></i></span>
+            </form>
+          </div>
+        </div>
+        <div class="nav-flyout-content">
+          <h3 class="subMenuToggler" menuElement='bank'><span><i id="bank-ico" class="fa fa-caret-down fa-lg"></i></span>Bank</h3>
+          <div id="bank" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button class="subMenuToggler" menuElement='operationsub'><span><i class="fa fa-files-o"></i></span>bank report</button>
+            <h5 class="subMenuToggler" menuElement='operationsub'><span><i id="operationsub-ico" class="fa fa-caret-right fa-lg"></i></span>Bank Report</h5>
+            <div class="operation-submenu-btn" id="operationsub" style="display: none">
+              <button><span><i class="fa fa-files-o"></i></span>budget total sugested</button>
+            <button><span><i class="fa fa-gg"></i></span>revenue collections</button>
+            <button><span><i class="fa fa-files-o"></i></span>revenue collections</button>
+            </div><!-- end operation-submenu-btn div here -->
+          </div>
+          <h3 class="subMenuToggler" menuElement='budget'><span><i id="budget-ico" class="fa fa-caret-down fa-lg"></i></span>Budget</h3>
+          <div id="budget" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>budget</button>
+            <button><span><i class="fa fa-files-o"></i></span>budget total sugested</button>
+            <button><span><i class="fa fa-gg"></i></span>revenue collections</button>
+            <button><span><i class="fa fa-files-o"></i></span>revenue collections fund catgory</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='bursary-para'><span><i id="bursary-para-ico"class="fa fa-caret-down fa-lg"></i></span>Bursary parameters</h3>
+          <div id="bursary-para" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='chart'><span><i id="chart-ico" class="fa fa-caret-down fa-lg"></i></span>charts</h3>
+          <div id="chart" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='items'><span><i id="items-ico" class="fa fa-caret-down fa-lg"></i></span>items and inventory</h3>
+          <div id="items" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='ledgers'><span><i id="ledgers-ico"class="fa fa-caret-down fa-lg"></i></span>ledger</h3>
+          <div id="ledgers" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='payable'><span><i id="payable-ico" class="fa fa-caret-down fa-lg"></i></span>payable</h3>
+          <div id="payable" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='payroll'><span><i id="payroll-ico" class="fa fa-caret-down fa-lg"></i></span>payroll</h3>
+          <div id="payroll" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='receivable'><span><i id="receivable-ico" class="fa fa-caret-down fa-lg"></i></span>receivable receipts</h3>
+          <div id="receivable" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='bank2'><span><i id="bank2-ico" class="fa fa-caret-down fa-lg"></i></span>Bank</h3>
+          <div id="bank2" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='budget2'><span><i id="budget2-ico" class="fa fa-caret-down fa-lg"></i></span>Budget</h3>
+          <div id="budget2" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>budget</button>
+            <button><span><i class="fa fa-files-o"></i></span>budget total sugested</button>
+            <button><span><i class="fa fa-gg"></i></span>revenue collections</button>
+            <button><span><i class="fa fa-files-o"></i></span>revenue collections fund catgory</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='bursary-para2'><span><i id="bursary-para2-ico"class="fa fa-caret-down fa-lg"></i></span>Bursary parameters</h3>
+          <div id="bursary-para2" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='chart2'><span><i id="chart2-ico" class="fa fa-caret-down fa-lg"></i></span>charts</h3>
+          <div id="chart2" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='items2'><span><i id="items2-ico" class="fa fa-caret-down fa-lg"></i></span>items and inventory</h3>
+          <div id="items2" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='ledgers2'><span><i id="ledgers2-ico"class="fa fa-caret-down fa-lg"></i></span>ledger</h3>
+          <div id="ledgers2" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='payable2'><span><i id="payable2-ico" class="fa fa-caret-down fa-lg"></i></span>payable</h3>
+          <div id="payable2" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='payroll2'><span><i id="payroll2-ico" class="fa fa-caret-down fa-lg"></i></span>payroll</h3>
+          <div id="payroll2" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='receivable2'><span><i id="receivable2-ico" class="fa fa-caret-down fa-lg"></i></span>receivable receipts</h3>
+          <div id="receivable2" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='bank3'><span><i id="bank3-ico" class="fa fa-caret-down fa-lg"></i></span>Bank</h3>
+          <div id="bank3" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='budget3'><span><i id="budget3-ico" class="fa fa-caret-down fa-lg"></i></span>Budget</h3>
+          <div id="budget3" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>budget</button>
+            <button><span><i class="fa fa-files-o"></i></span>budget total sugested</button>
+            <button><span><i class="fa fa-gg"></i></span>revenue collections</button>
+            <button><span><i class="fa fa-files-o"></i></span>revenue collections fund catgory</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='bursary-para3'><span><i id="bursary-para3-ico"class="fa fa-caret-down fa-lg"></i></span>Bursary parameters</h3>
+          <div id="bursary-para3" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='chart3'><span><i id="chart3-ico" class="fa fa-caret-down fa-lg"></i></span>charts</h3>
+          <div id="chart3" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='items3'><span><i id="items3-ico" class="fa fa-caret-down fa-lg"></i></span>items and inventory</h3>
+          <div id="items3" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='ledgers3'><span><i id="ledgers3-ico"class="fa fa-caret-down fa-lg"></i></span>ledger</h3>
+          <div id="ledgers3" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+          <h3 class="subMenuToggler" menuElement='payable3'><span><i id="payable3-ico" class="fa fa-caret-down fa-lg"></i></span>payable</h3>
+          <div id="payable3" class="submenu" style="display:block">
+            <button><span><i class="fa fa-wpforms"></i></span>bank account balances</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank account transactions</button>
+            <button><span><i class="fa fa-gg"></i></span>bank account</button>
+            <button><span><i class="fa fa-files-o"></i></span>bank report</button>
+          </div>
+        </div><!-- end nav-fly-out content -->
+      </div><!-- end nav flyout div here -->
+      <div class="operation-icon-title">
+        <div class="operation-icon-title-left">
+          <h1>student</h1>
+        </div>
+        <div class="operation-icon-title-right">
+          <button><span><i class="fa fa-info-circle"></i></span></button>
+          <button><span><i class="fa fa-question-circle-o"></i></span></button>
+          <button><span><i class="fa fa-window-maximize fa-rotate-270"></i></span></button>
+          <button><span><i class="fa fa-window-maximize fa-rotate-90"></i></span></button>
+          <button><span><i class="fa fa-square"></i></span></button>
+          <button><span><i class="fa fa-window-restore "></i></span></button>
+          <button><span><i class="fa fa-ban"></i></span></button>
+          <button><span><i class="fa fa-window-close-o"></i></span></button>
+        </div>
+      </div>
+      <div id="content-main-row">
+        <div class="content-main-menu">
+          <div class="tabcontainer">
+            <div class="tab-icon-wrapper">
+              <div id="tab-icon">
+                <button class="tooltip3">
+                  <i class="fa fa-plus"></i>
+                  <span class="tooltiptext first-btn-tooltip">create new</span>
+                </button>
+                <button class="tooltip3">
+                  <i class="fa fa-folder-o"></i>
+                  <span class="tooltiptext">new template</span>
+                </button>
+                <button class="tooltip3">
+                  <i class="fa fa-edit"></i>
+                  <span class="tooltiptext">edit</span>
+                </button>
+                <button class="tooltip3">
+                  <i class="fa fa-search searchToggler" menuElement="search"></i>
+                  <span class="tooltiptext">search</span>
+                </button>
+                <button class="tooltip3">
+                  <i class="fa fa-save"></i>
+                  <span class="tooltiptext">save</span>
+                </button>
+                <button class="tooltip3">
+                  <i class="fa fa-file"></i>
+                  <span class="tooltiptext">details</span>
+                </button>
+                <button class="tooltip3">
+                  <i class="fa fa-trash"></i>
+                  <span class="tooltiptext">delete</span>
+                </button>
+              </div>
+            </div><!-- tab-icon wrapper ends here -->
+            <!-- <div class="all-button-wrapper">
+              <div class="all-button-scrollable"> -->
+                <div class="mobile-operation-category">
+                  <div class="mobile-operation-category-holder">
+                    <div id="button-wrapper" class="buttoncontainer">
+                      <button class="menuToggler operationCat" menuElement='registration'>registration</button>
+                      <button class="menuToggler operationCat" menuElement='medical'>medical</button>
+                      <button class="menuToggler operationCat" menuElement='student'>student</button>
+                      <button class="menuToggler operationCat" menuElement='others'>others</button>
+                      <button class="menuToggler operationCat" menuElement='registration'>registration</button>
+                      <button class="menuToggler operationCat" menuElement='medical'>medical</button>
+                      <button class="menuToggler operationCat" menuElement='student'>student</button>
+                      <button class="menuToggler operationCat" menuElement='others'>others</button>
+                      <button class="menuToggler operationCat" menuElement='others2'>others2</button>
+                    </div>
+                    <div id="registration" class="overlayMenu tabpanel operationMenu" style="display: none" hidden>
+                      <div class="tabpanel-scrollable">
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                      </div><!-- end the tabpanel-scrollable tab here -->
+                    </div><!-- end registration content -->
+                    <div id="medical" class="overlayMenu tabpanel operationMenu" style="display: none" hidden>
+                      <div class="tabpanel-scrollable">
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span> Final Course Registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                      </div><!-- end tabpanel-scrollable div here -->
+                    </div><!-- end medical content here -->
+                    <div id="student" class="overlayMenu tabpanel operationMenu" style="display: none" hidden>
+                      <div class="tabpanel-scrollable">
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>new course here</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>new course here</a></li>
+                          </ul>
+                        </div>
+                      </div><!-- end tabpanel-scrollable div here -->
+                    </div><!-- end student registration div here -->
+                    <div id="others" class="overlayMenu tabpanel operationMenu" style="display: none" hidden>
+                      <div class="tabpanel-scrollable">
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div><!-- end others divs here --> 
+                    <div id="others2" class="overlayMenu tabpanel operationMenu" style="display: none" hidden>
+                      <div class="tabpanel-scrollable">
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                        <div class="tabpanel-menu">
+                          <ul>
+                            <li><a role="button" href="#"><span><i class="fa fa-wpforms"></i></span>view course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>approve course registeration</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-gg"></i></span>late registration application</a></li>
+                            <li><a role="button" href="#"><span><i class="fa fa-files-o"></i></span>view course registeration</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div><!-- end others2 divs here --> 
+                  </div><!-- mobile-operation-category-holder -->
+                </div><!-- end mobile-operatio-category -->
+                <div class="drop-operations tooltip3">
+                  <span><i id='registration-ico' status='unpinned' class="fa fa-angle-down fa-lg menuHider" menuElement='registration'></i></span>
+                  <span id='registration-tooltip' class="tooltiptext-drop">Expand</span>
+                </div><!-- drop-operations here -->
+              <!-- </div><-- end all-button-scrollable -->
+            </div><!-- all button-wrapper div --> 
+          </div><!-- end tabcontainer here -->  
+        </div><!-- content-main-menu -->
+        <!-- grid links starts here -->
+        <div id="grid-links">
+          <div class="grid-link-scroll">
+            <button>multi-select</button>
+            <button>reload selected</button>
+            <button>refresh</button>
+            <button>first</button>
+            <button>next</button>
+            <button>previous</button>
+            <button>last</button>
+            <button>query</button>
+            <button>clear query</button>
+            <button>export</button>
+          </div><!-- end grid-link-scroll div here -->
+        </div>
+        <!-- end grid links here -->
+        <!-- start query table from here -->
+        <div class="query-table">
+          <div class="query-table-title">
+            <input type="text" placeholder="enter query name"><span class="sv">save</span>
+          </div><!-- end query-table-title here -->
+          <div class="query-table-content">
+            <div class="table-content-row1">
+              <ul>
+                <li>
+                  <!-- start a table field here -->
+                  <ul class="table-field table-query-head">
+                    <li class="query-table-main">
+                      <select class="long-select">
+                        <option>student</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <select class="short-select">
+                        <option>join</option>
+                        <option>left outer join</option>
+                        <option>right outer join</option>
+                        <option>exists join</option>
+                        <option>not exists join</option>
+                      </select>
+                      <span class="add"><i class="fa fa-plus plus-bg"></i>add filter</span> |
+                      <span class="add"><i class="fa fa-plus plus-bg"></i>add join</span>
+                    </li>
+                    <li class="table-field-details">
+                      <select class="long-select">
+                        <option>student award</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <!-- select option with checkboxes -->
+                       <div class="multi-select">
+                          <div class="select-box" onclick="showCheckboxes()">
+                            <select>
+                              <option>not set</option>
+                            </select>
+                            <div class="overselect"></div>
+                            <div id="checkboxes">
+                              <label for="one"><input type="checkbox" id="one"/><span>[select all]</span></label>
+                              <label for="two"><input type="checkbox" id="two"/><span>not set</span></label>
+                              <label for="three"><input type="checkbox" id="three"/><span>yes</span></label>
+                              <label for="four"><input type="checkbox" id="four"/><span>no</span></label>
+                            </div><!-- end checkboxes div here --> 
+                          </div><!-- end select-box -->
+                        </div><!-- end multi-select div here -->
+                      <!-- end select option with checkboxes -->
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span>
+                    </li>
+                    <li class="table-field-details">
+                      <select class="long-select">
+                        <option>student award</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <input type="checkbox">
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span> 
+                    </li>
+                    <li class="table-field-details">
+                      <select class="long-select">
+                        <option>student award</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <input type="text">
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span> 
+                    </li>
+                    <li class="table-field-details">
+                      <select class="long-select">
+                      <option>student awards</option>
+                      <option>student change of programm applications</option>
+                      <option>student exam subjects</option>
+                      <option>student election application</option>
+                      <option>student data history</option>
+                      </select> <span>-</span>
+                      <input type="text"><span class="rsearch"><i class="fa fa-search"></i></span>
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span> 
+                    </li>
+                  </ul>
+                </li>
+                <li> 
+                  <ul class="table-field2 table-query-head">
+                    <li class="query-table-main-sub">
+                      <select class="long-select">
+                        <option>student programmes</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <select class="short-select">
+                        <option>select field</option>
+                        <option>student change</option>
+                        <option>student exam</option>
+                        <option>student election</option>
+                        <option>student data</option>
+                      </select> <span>-</span>
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span>
+                    </li>
+                    <li class="table-field-details push-left">
+                      <select class="long-select">
+                        <option>student award</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <input type="checkbox">
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span> 
+                    </li>
+                    <li class="table-field-details push-left">
+                      <select class="long-select">
+                        <option>student award</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <input type="text">
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span> 
+                    </li>
+                    <li class="table-field-details push-left">
+                      <select class="long-select">
+                      <option>student award</option>
+                      <option>student change of programm applications</option>
+                      <option>student exam subjects</option>
+                      <option>student election application</option>
+                      <option>student data history</option>
+                      </select> <span>-</span>
+                      <input type="text"><span class="rsearch"><i class="fa fa-search"></i></span>
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span> 
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="table-field3 table-query-head">
+                    <li class="query-table-main-sub query-table-second">
+                      <select class="long-select">
+                        <option>session</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <select class="short-select">
+                        <option>select field</option>
+                        <option>student change</option>
+                        <option>student exam</option>
+                        <option>student election</option>
+                        <option>student data</option>
+                      </select> <span>-</span>
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span>
+                    </li>
+                    <li class="table-field-details push-left">
+                      <select class="long-select">
+                        <option>student award</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <input type="checkbox">
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span> 
+                    </li>
+                    <li class="table-field-details push-left">
+                      <select class="long-select">
+                        <option>student award</option>
+                        <option>student change of programm applications</option>
+                        <option>student exam subjects</option>
+                        <option>student election application</option>
+                        <option>student data history</option>
+                      </select> <span>-</span>
+                      <input type="text">
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span> 
+                    </li>
+                    <li class="table-field-details push-left">
+                      <select class="long-select">
+                      <option>student award</option>
+                      <option>student change of programm applications</option>
+                      <option>student exam subjects</option>
+                      <option>student election application</option>
+                      <option>student data history</option>
+                      </select> <span>-</span>
+                      <input type="text"><span class="rsearch"><i class="fa fa-search"></i></span>
+                      <span class="times"><i class="fa fa-times times-bg"></i>remove</span> 
+                    </li>
+                    <li class="table-field-details push-left">
+                      <select class="long-select">
+                      <option>student award</option>
+                      <option>student change of programm applications</option>
+                      <option>student exam subjects</option>
+                      <option>student election application</option>
+                      <option>student data history</option>
+                      </select> <span>-</span>
+                      <select class="short-select">
+                        <option>join</option>
+                        <option>left outer join</option>
+                        <option>right outer join</option>
+                        <option>exists join</option>
+                        <option>not exists join</option>
+                      </select>
+                      <span class="add"><i class="fa fa-plus plus-bg"></i>add filter</span> |
+                      <span class="add"><i class="fa fa-plus plus-bg"></i>add join</span> |
+                      <span class="times"><i class="fa fa-minus times-bg"></i>remove</span> 
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- end table content-row1 here -->
+            <!-- show table for query here -->
+              <div class="table-for-query">
+                <div class="table-for-query-row">
+                  <p><span><i class="fa fa-plus"></i></span>add sort field</p>
+                  <table border="1">
+                    <tr>
+                      <th>s/no.</th>
+                      <th>entity</th>
+                      <th>field</th>
+                      <th>sort direction</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <select>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select>
+                          <option>select field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="sort">
+                          <option>ascending</option>
+                          <option>descending</option>
+                        </select>
+                      </td>
+                      <td>
+                        <ul>
+                          <li><a href="#"><i class="fa fa-times"></i></a></li>
+                          <li><a href="#">remove</a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>
+                        <select>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select>
+                          <option>select field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="sort">
+                          <option>ascending</option>
+                          <option>descending</option>
+                        </select>
+                      </td>
+                      <td>
+                        <ul>
+                          <li><a href="#"><i class="fa fa-times"></i></a></li>
+                          <li><a href="#">remove</a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>
+                        <select>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select>
+                          <option>select field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="sort">
+                          <option>ascending</option>
+                          <option>descending</option>
+                        </select>
+                      </td>
+                      <td>
+                        <ul>
+                          <li><a href="#"><i class="fa fa-times"></i></a></li>
+                          <li><a href="#">remove</a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- table-for-query-row -->
+                <div class="table-for-query-row query-push">
+                  <p><span><i class="fa fa-plus"></i></span>add output field</p>
+                  <table border="1">
+                    <tr>
+                      <th>entity</th>
+                      <th>field</th>
+                      <th>field type</th>
+                      <th>group</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select>
+                          <option>current programme</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select>
+                          <option>field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox">
+                      </td>
+                      <td>
+                        <ul>
+                          <li><a href="#"><i class="fa fa-times"></i></a></li>
+                          <li><a href="#">remove</a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select>
+                          <option>student(students)</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select>
+                          <option>first name</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select>
+                          <option>field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox">
+                      </td>
+                      <td>
+                        <ul>
+                          <li><a href="#"><i class="fa fa-times"></i></a></li>
+                          <li><a href="#">remove</a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select>
+                          <option>student (students)</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select>
+                          <option>last name</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                          <option>student programmes</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select>
+                          <option>field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                          <option>select field</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox">
+                      </td>
+                      <td>
+                        <ul>
+                          <li><a href="#"><i class="fa fa-times"></i></a></li>
+                          <li><a href="#">remove</a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- table-for-query-row -->
+              </div><!-- end table for query -->
+            <!-- end table for query here -->
+          </div><!-- end query-table-content -->
+        </div><!-- end query table here -->
+        <!-- end query table here -->
+      </div><!-- content main row -->
+    </div><!-- content-right end here -->
+  </div><!-- end content div here -->
+  <!-- content session ends here -->
+
+  <script type="text/javascript" src="js/formalScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿.entityname {
+    font-weight:bold;
+}
+
+span, a {
+    /*margin-right:5px;*/
+    /*margin-left:5px*/
+}
+
+.entityname {
+    font-size:15px;
+}
+
+.entityname::after, .addfilterlink::after, .addjoinlink::after, .removejoinlink::after {
+    content: "\00a0 "
+}
+
+.addfilterlink, .addjoinlink, .removejoinlink, .removewhereparameterlink, .removesortfieldlink {
+    font-weight: bold
+} 
+    
+    
+.addfilterlink::before, .addjoinlink::before {
+    content: "\00a0 | +"
+}
+
+.removejoinlink::before {
+    content: " | -"
+}
+
+#addoutputsortfieldlink::before, #addoutputfieldlink::before {
+    content:"+"
+}
+
+#addsortfieldlink {
+    font-weight: bold
+}
+
+#addoutputfieldlink {
+    font-weight: bold
+}
+
+#sortfieldstable, #outputfieldstable {
+    margin-top:5px
+}
+
+table, table th, table td{
+    padding:5px;
+    border:1px solid;
+}
+
+.whereparametercontainer, .entityselect {
+    padding: 5px;
+    padding-left: 0px
+}
+
+.whereparametervaluecontainer {
+    display: inline-block;
+    width:200px
+}
+
+.removewhereparameterlink::before {
+    content: "\00a0 |\00a0 -"
+}
+
+ul {
+    -webkit-padding-start:15px
+}
+
+#querynamediv {
+    margin-top:15px;
+}
+
+#querycontainer {
+    border-style:inset;
+    padding:10px;
+}
+
+#outputfields {
+    margin-top:20px
+}

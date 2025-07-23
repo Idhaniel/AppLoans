@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div> 
+        <div>@ViewBag.Error</div>
+        <form method="post">
+            <div id="usernamediv" class="formdiv"><input type="text" name="username" placeholder="Username" /></div>
+            <div id="passworddiv" class="formdiv"><input type="password" name="password" placeholder="Password" /></div>
+            <div id="loginbuttondiv" class="formdiv"><input type="submit" value="Submit" /></div>
+        </form>
+    </div>
+</body>
+</html>

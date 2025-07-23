@@ -1,0 +1,775 @@
+﻿
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = ViewBag.ApplicationName;
+
+    //    Dictionary<string, string> defaultColourVariables = new Dictionary<string, string>() { { "--primary-background-color", "#ffffff" },
+    //                                                                   { "--secondary-background-color", "#d0cfcf" },
+    //                                                                    {"--primary-font-color", "#717171" },
+    //                                                                    {"--secondary-font-color", "#717171" },
+    //                                                                    {"--deep-font-color", "#333333" },
+    //                                                                    { "--header-primary-background-color", "#219ff4"},
+    //                                                                    {"--header-secondary-background-color", "#00c0ff" },
+    //                                                                    {"--header-primary-font-color", "#ffffff" },
+    //                                                                    {"--header-secondary-font-color", "#ffffff" },
+    //                                                                    {"--disabled-buttons-color", "#cebaba" }
+    //};
+
+    //Dictionary<string, string> colourVariables = null;
+
+    //AppFramework.AppClasses.AppEntities.UserSettings colorSchemeFormSettings = null;
+
+    //try
+    //{
+    //    colorSchemeFormSettings = (from us in new AppFramework.Linq.QueryableEntity<AppFramework.AppClasses.AppEntities.UserSettings>() where us.Username == AppFramework.AppClasses.Session.Username && us.ObjectName.EndsWith("ColourSchemeForm") select us).FirstOrDefault();
+    //}
+    //catch (Exception ex)
+    //{
+    //    AppFramework.AppClasses.Infolog.writeToEventLog(ex, AppFramework.AppClasses.InfoType.Warning);
+    //}
+
+    //if (colorSchemeFormSettings == null)
+    //{
+    //    colourVariables = defaultColourVariables;
+    //}
+    //else
+    //{
+    //    try
+    //    {
+    //        var settingsObject = (Dictionary<string, object>)AppFramework.AppClasses.Util.deserialize(colorSchemeFormSettings.Value, true);
+    //        if (!settingsObject.ContainsKey("colorVariables"))
+    //        {
+    //            colourVariables = defaultColourVariables;
+    //        }
+    //        else
+    //        {
+    //            colourVariables = (Dictionary<string, string>)settingsObject["colorVariables"];
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        colourVariables = defaultColourVariables;
+    //    }
+    //}
+}
+
+@*<meta name="viewport" content="width=device-width" />
+    <title></title>*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier</title>
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <link rel="stylesheet" type="text/css" href="~/css/responsive.css">
+
+
+    <!-- font links -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link href="~/images/favicon.ico" rel="shortcut icon">
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    @*<link rel="stylesheet" href="~/css/bootstrap.css">*@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="~/Scripts/jquery-3.js?" type="text/javascript"></script>
+    <script>
+        //function setColorVariables(colorVariables) {
+        //    if (!colorVariables) {
+        //        colorVariables = self.colorVariables;
+        //    }
+        //    var colorVariableKeys = Object.keys(colorVariables);
+        //    for (let i = 0; i < colorVariableKeys.length; i++) {
+        //        let key = colorVariableKeys[i];
+        //        document.querySelector(":root").style.setProperty(key, colorVariables[key]);
+        //    }
+        //}
+
+        var porttouse = @ViewBag.porttouse;
+        var antiforgerytoken = '@(ViewBag.antiforgerytoken ?? "")';
+        var colorVariables = {};
+        var colorVariablesAtStart = {};
+        var defaultColorVariables = {};
+        var maxalerts = 200;
+        @*@{
+            foreach (var temp in colourVariables)
+            {
+                <text>colorVariables['@temp.Key'] = '@temp.Value';</text>
+                <text>colorVariablesAtStart['@temp.Key'] = '@temp.Value';</text>
+            }
+            foreach (var temp in defaultColourVariables)
+            {
+                <text>defaultColorVariables['@temp.Key'] = '@temp.Value';</text>
+            }
+        }
+        setColorVariables();*@
+    </script>
+    @{
+        int randomjsfilequerystring = (new Random(DateTime.Now.Second).Next());
+    }
+    <script src="~/Scripts/AppFrameworkJSClient.js?rand=@randomjsfilequerystring"></script>
+    <script>
+        randomjsfilequerystring = @randomjsfilequerystring;
+    </script>
+    @*<script src="~/Scripts/action.js" type="text/javascript"></script>*@
+    <script>
+        var debug = @ViewBag.Debug.ToString().ToLower();
+        window.onbeforeunload = function (e) {
+            if (!connectionclosed) {
+                return 'Are you sure? Unsaved changes may be lost.';
+            }
+            else {
+                return null;
+            }
+        };
+
+        pauseoverlayid = "loadingdiv";
+        infologdivid = "infologdiv";
+        leftdockwidth = "calc(50% - 5px)";
+        rightdockwidth = "calc(50% - 5px)";
+        leftdockleft = "10px";
+        //debugger;
+        startingzindex = 4;
+        function changeCompany(company) {
+            let naviframe = document.getElementById("nav-iframe");
+            naviframe.contentDocument.changeCompany(company, function () {
+                let companiesbutton = document.getElementById("company-name-value");
+                companiesbutton.innerText = company;
+            });
+            toggle(document.getElementById('company-list'));
+        }
+
+        function changePassword() {
+            let naviframe = document.getElementById("nav-iframe");
+            //debugger;
+            naviframe.contentDocument.changePassword();
+
+            toggle(document.getElementById('profile-drop-down'));
+        }
+
+        //function setColorScheme() {
+        //    let naviframe = document.getElementById("nav-iframe");
+        //    //debugger;
+        //    naviframe.contentDocument.setColorScheme();
+        //}
+
+        function addDashboardReport() {
+            let naviframe = document.getElementById("nav-iframe");
+            //debugger;
+            naviframe.contentDocument.addDashboardReport();
+        }
+
+        function refreshDashboardReports() {
+            let naviframe = document.getElementById("nav-iframe");
+            //debugger;
+            naviframe.contentDocument.refreshDashboardReports();
+        }
+
+        function deleteDashboardReport(link) {
+            let naviframe = document.getElementById("nav-iframe");
+            //debugger;
+            let index = link.getAttribute('savedreportindex');
+            naviframe.contentDocument.deleteDashboardReport(index);
+        }
+
+        function moveUpDashboardReport(link) {
+            let naviframe = document.getElementById("nav-iframe");
+            //debugger;
+            let index = link.getAttribute('savedreportindex');
+            naviframe.contentDocument.moveUpDashboardReport(index);
+        }
+
+        function moveDownDashboardReport(link) {
+            let naviframe = document.getElementById("nav-iframe");
+            //debugger;
+            let index = link.getAttribute('savedreportindex');
+            naviframe.contentDocument.moveDownDashboardReport(index);
+        }
+
+        function createSavedReportIFrames(iframeids) {
+            //debugger;
+            let dashboardreports = document.getElementById('dashboardreports');
+            dashboardreports.innerHTML = '';
+
+            let height = $('#dashboardreports').innerHeight() * 0.5;
+            //let i = 0;
+            //for (let i = 0; i < iframeids.length; i++) {
+            let createreportdivfunction = function (i) {
+                let dashboardreportdiv = document.createElement('div');
+                $(dashboardreportdiv).height(height);
+                $(dashboardreportdiv).addClass("col-sm-6");
+                $(dashboardreportdiv).addClass("col-xs-12");
+                $(dashboardreportdiv).addClass("dashboardreportdiv");
+                dashboardreportdiv.setAttribute('id', 'dashboardreportcontainer_' + iframeids[i]);
+
+                let dashboardreportiframe = document.createElement('iframe');
+                let deletediv = document.createElement('div');
+                deletediv.setAttribute('class', 'deletesavedreportdiv');
+
+                let moveuplink = document.createElement('a');
+                moveuplink.innerText = 'Move Up';
+                moveuplink.setAttribute('href', 'javascript:void(0)');
+                moveuplink.setAttribute('savedreportindex', i);
+                moveuplink.setAttribute('class', 'moveupreportlink dashboardreportcontrollink');
+                moveuplink.setAttribute('onclick', 'moveUpDashboardReport(this);');
+                deletediv.appendChild(moveuplink);
+
+                let movedownlink = document.createElement('a');
+                movedownlink.innerText = 'Move Down';
+                movedownlink.setAttribute('href', 'javascript:void(0)');
+                movedownlink.setAttribute('savedreportindex', i);
+                movedownlink.setAttribute('class', 'movedownreportlink dashboardreportcontrollink');
+                movedownlink.setAttribute('onclick', 'moveDownDashboardReport(this);');
+                deletediv.appendChild(movedownlink);
+
+                //let deletelink = document.createElement('a');
+                //deletelink.innerText = 'Delete Report';
+                //deletelink.setAttribute('href', 'javascript:void(0)');
+                //deletelink.setAttribute('savedreportindex', i);
+                //deletelink.setAttribute('class', 'deletesavedreportlink dashboardreportcontrollink');
+                //deletelink.setAttribute('onclick', 'deleteDashboardReport(this);');
+                //deletediv.appendChild(deletelink);
+
+                let deletelink = document.createElement('a');
+                deletelink.innerText = 'Delete Report';
+                deletelink.setAttribute('href', 'javascript:void(0)');
+                deletelink.setAttribute('savedreportindex', i);
+                deletelink.setAttribute('class', 'deletesavedreportlink dashboardreportcontrollink');
+                deletelink.setAttribute('onclick', 'deleteDashboardReport(this);');
+                deletediv.appendChild(deletelink);
+
+                dashboardreportiframe.setAttribute('id', iframeids[i]);
+                dashboardreportiframe.setAttribute('class', 'dashboardreportiframe');
+                //$(dashboardreportiframe).css('border-style', 'none');
+                //$(dashboardreportiframe).css('display', 'none');
+
+                dashboardreportdiv.appendChild(dashboardreportiframe);
+                dashboardreportdiv.appendChild(deletediv);
+
+                dashboardreports.appendChild(dashboardreportdiv);
+
+
+                prepareIframe(dashboardreportiframe, function () {
+                    //i++;
+                    if (i < iframeids.length - 1) {
+                        createreportdivfunction(i + 1);
+                    }
+                });
+            };
+            if (iframeids.length > 0) {
+                createreportdivfunction(0);
+            }
+
+            //}
+
+        }
+
+        //function switchToRecentlyUsedTab() {
+        //    //if ($(".dashboardreportdiv").length == 0) {
+        //    $('#recentlyusedtab').tab('show');
+        //    //}
+        //}
+
+        function setLoadingDivSize() {
+            //console.log("resize");
+            let loadingdiv = document.getElementById(pauseoverlayid);
+
+            let loadingdivvisible = $(loadingdiv).is(":visible");
+            if (!loadingdivvisible) {
+                $(loadingdiv).css("z-index", 0);
+                $(loadingdiv).show();
+            }
+
+            let divwidth = $(loadingdiv).innerWidth();
+            let divheight = $(loadingdiv).innerHeight();
+
+            let loadingimage = document.getElementById("loadingimage");
+            let loadingpercentagespan = document.getElementById("loadingpercentagespan");
+            let loadingtextspan = document.getElementById("loadingtextspan");
+            $(loadingimage).css("left", (divwidth - $(loadingimage).outerWidth()) / 2);
+            $(loadingimage).css("top", (divheight - $(loadingimage).outerHeight()) / 2);
+            $(loadingpercentagespan).css("top", (divheight - $(loadingpercentagespan).outerHeight()) / 2);
+            $(loadingtextspan).css("top", ((divheight - $(loadingtextspan).outerHeight()) / 2) + ($(loadingimage).outerHeight() / 2) + 30); ///* + ($(loadingimage).outerHeight() / 2)*/);
+
+            if (!loadingdivvisible) {
+                $(loadingdiv).hide();
+            }
+        }
+
+        function viewAlert(alertid) {
+            let naviframe = document.getElementById("nav-iframe");
+            //debugger;
+            naviframe.contentDocument.viewAlertEntity(alertid);
+            let notificationdetails = document.getElementById('notification-details');
+            if (notificationdetails.hasAttribute('visible')) {
+                callHook('alerttoggle');
+            }
+        }
+
+        function markAlertsRead(alertids, read) {
+            let alertidsstring = '';
+            for (let i = 0; i < alertids.length; i++) {
+                alertidsstring += alertids[i];
+                if (i < alertids.length - 1) {
+                    alertidsstring += ',';
+                }
+            }
+            let markalertsurl = '/Home/MarkAlertsRead?alertidsstring=' + alertidsstring + '&read=' + read;
+            $.ajax({
+                url: markalertsurl,
+                success: function (data) {
+                    //debugger;
+                    if (data) {
+                        for (let i = 0; i < alertids.length; i++) {
+                            let alertid = alertids[i];
+                            markAlertListItemRead(alertid, read);
+                        }
+                    }
+                }
+            });
+        }
+
+        function deleteAlert(alertids) {
+            let alertidsstring = '';
+            for (let i = 0; i < alertids.length; i++) {
+                alertidsstring += alertids[i];
+                if (i < alertids.length - 1) {
+                    alertidsstring += ',';
+                }
+            }
+            let markalertsurl = '/Home/DeleteAlerts?alertidsstring=' + alertidsstring;
+            $.ajax({
+                type: "POST",
+                url: markalertsurl,
+                success: function (data) {
+                    //debugger;
+                    if (data) {
+                        for (let i = 0; i < alertids.length; i++) {
+                            let alertid = alertids[i];
+                            removeAlertListItem(alertid);
+                        }
+                    }
+                }
+            });
+        }
+
+        function markAlertListItemRead(alertid, read) {
+            let alertlistitem = self.top.document.querySelector('#notification-details .notify-box-wrapper[alertid="' + alertid + '"]');
+            if (!alertlistitem) {
+                //debugger;
+            }
+            else {
+                if (read) {
+                    alertlistitem.setAttribute('read', '');
+                }
+                else {
+                    alertlistitem.removeAttribute('read');
+                }
+            }
+        }
+
+        function removeAlertListItem(alertid) {
+            let alertlistitem = self.top.document.querySelector('#notification-details .notify-box-wrapper[alertid="' + alertid + '"]');
+            $(alertlistitem).remove();
+        }
+
+        function closeHamburgerIfMobile() {
+            //if mobile display and the menu is open
+            if (screen.width <= 900 && $('#content-left').css('display') == 'block') {
+                toggle(document.getElementById('content-left'));
+            }
+        }
+
+        var lastretrieveddatetime = null;
+        function getAlerts() {
+            let alerturl = '/Home/Alerts?lastretrieveddatetimestring=';
+            //if (lastretrieveddatetime) {
+            //    alerturl += lastretrieveddatetime
+            //}
+            $.ajax({
+                url: alerturl,
+                success: function (data) {
+                    lastretrieveddatetime = data.lastalertdatetimestring;
+                    let alerts = data.alerts;
+                    if (alerts && alerts.length > 0) {
+                        let unreadcount = 0;
+                        let alertlist = document.getElementById('notification-body');
+                        //$(noalertfoundlistitem).css('display', 'none');
+                        for (let i = alerts.length - 1; i >= 0; i--) {
+                            let alert = alerts[i];
+
+                            if (!alert.alertread) {
+                                unreadcount++;
+                            }
+
+                            //let li = document.querySelector('li[alertid="' + alert.alertid + '"]')
+                            let alertliid = 'alert_li_' + alert.alertid;
+                            let notificationbox = document.getElementById(alertliid);
+                            if (notificationbox) {
+                                continue;
+                            }
+
+                            notificationbox = document.createElement('div');
+                            notificationbox.setAttribute('id', alertliid);
+                            notificationbox.setAttribute('class', 'notify-box-wrapper');
+                            notificationbox.setAttribute('alertid', alert.alertid);
+                            if (alert.alertread) {
+                                notificationbox.setAttribute('read', '');
+                            }
+
+                            //li.innerHTML = '<div class="readcheckboxdiv"><input type="checkbox" class="markcheckbox" /></div><div class="alertitemdiv"><div class="alerttitlediv">Sample Alert Sample Alert Sample Alert Sample Alert Sample Alert Sample Alert</div><div class="alertdescriptiondiv"><a href="javascript:void(0)" class="alertitemlink">Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert Alert </a></div></div> <div class="alertbuttonsdiv"><div class="alertbuttondiv"><button>View</button></div><div class="alertbuttondiv"><button>Mark Read</button></div><div class="alertbuttondiv"><button>Delete</button></div></div></li>';
+                            let readcheckboxdiv = document.createElement('div');
+                            readcheckboxdiv.setAttribute('class', 'notify-checkbox');
+                            let markcheckbox = document.createElement('input');
+                            markcheckbox.setAttribute('type', 'checkbox');
+                            markcheckbox.setAttribute('class', 'markalertcheckbox');
+                            markcheckbox.setAttribute('alertid', alert.alertid);
+
+                            readcheckboxdiv.appendChild(markcheckbox);
+
+                            let alertitemdiv = document.createElement('div');
+                            alertitemdiv.setAttribute('class', 'notification-row');
+
+                            let alertmenuicondiv = document.createElement('div');
+                            alertmenuicondiv.setAttribute('class', 'notification-menu');
+
+                            let alertmenui = document.createElement('i');
+                            alertmenui.setAttribute('class', 'subMenuToggler fa fa-ellipsis-h');
+                            alertmenui.setAttribute('menuElement', 'alert_menu_' + alert.alertid);
+
+                            subMenuTogglerPerElement(alertmenui);
+
+                            alertmenuicondiv.appendChild(alertmenui);
+                            //alerttitlediv.innerText = alert.alerttitle;
+
+                            alertitemdiv.appendChild(alertmenuicondiv);
+
+                            let alertmenudiv = document.createElement('div');
+                            alertmenudiv.setAttribute('id', 'alert_menu_' + alert.alertid);
+                            alertmenudiv.setAttribute('class', 'overlayMenu notification-menu-buttons-div');
+                            $(alertmenudiv).css('display', 'none');
+
+                            let alertmarkreadbutton = document.createElement('button');
+                            alertmarkreadbutton.setAttribute('class', 'alertmarkreadbutton');
+                            alertmarkreadbutton.innerText = 'Mark Read';
+                            alertmarkreadbutton.addEventListener('click', function () {
+                                markAlertsRead([alert.alertid], true);
+                                toggle(document.getElementById('alert_menu_' + alert.alertid));
+                            });
+
+                            let alertmarkunreadbutton = document.createElement('button');
+                            alertmarkunreadbutton.setAttribute('class', 'alertmarkunreadbutton');
+                            alertmarkunreadbutton.innerText = 'Mark Unread';
+                            alertmarkunreadbutton.addEventListener('click', function () {
+                                markAlertsRead([alert.alertid], false);
+                                toggle(document.getElementById('alert_menu_' + alert.alertid));
+                            });
+
+                            let alertdeletebutton = document.createElement('button');
+                            alertdeletebutton.innerText = 'Delete';
+                            alertdeletebutton.addEventListener('click', function () {
+                                deleteAlert([alert.alertid]);
+                                toggle(document.getElementById('alert_menu_' + alert.alertid));
+                            });
+
+                            alertmenudiv.appendChild(alertmarkreadbutton);
+                            alertmenudiv.appendChild(alertmarkunreadbutton)
+                            alertmenudiv.appendChild(alertdeletebutton);
+
+                            alertitemdiv.appendChild(alertmenudiv);
+
+                            let alertcontent = document.createElement('a');
+                            alertcontent.setAttribute('href', 'javascript:void(0)');
+                            alertcontent.setAttribute('class', 'checked-link');
+
+                            let alerttitle = document.createElement('h4');
+                            alerttitle.innerText = alert.alerttitle;
+
+                            let alertdescription = document.createElement('p');
+                            alertdescription.innerText = alert.alertdescription;
+
+                            alertcontent.appendChild(alerttitle);
+                            alertcontent.appendChild(alertdescription);
+
+                            alertcontent.addEventListener('click', function () {
+                                viewAlert(alert.alertid);
+                                toggle(document.getElementById('notification-details'));
+                            });
+
+                            alertitemdiv.appendChild(alertcontent);
+
+                            notificationbox.appendChild(readcheckboxdiv);
+                            notificationbox.appendChild(alertitemdiv);
+
+                            $(alertlist).prepend(notificationbox);
+
+                            if (alertlist.querySelectorAll('.notify-box-wrapper').length > maxalerts) {
+                                //debugger;
+                                $(alertlist.lastChild).remove();
+                            }
+                        }
+                        document.getElementById('notify-count').innerText = unreadcount == 0 ? '' : unreadcount;
+                    }
+                    else {
+                        document.getElementById('notify-count').innerText = '';
+                        //$(noalertfoundlistitem).css('display', 'initial');
+                    }
+
+                    //var noalertfoundlistitem = document.getElementById('noalertfoundlistitem');
+
+                    //var alertlistitems = document.querySelectorAll('.alertlistitem');
+                    //if (alertlistitems.length == 0) {
+                    //    $(noalertfoundlistitem).css('display', '');
+                    //}
+                    //else {
+                    //    $(noalertfoundlistitem).css('display', 'none');
+                    //}
+
+                    //var unreadcount = document.querySelectorAll('.alertlistitem:not([read])').length;
+                    //let unreadalertcountspan = document.getElementById('unreadalertcountspan');
+                    //if (unreadcount == 0) {
+                    //    unreadalertcountspan.innerText = '';
+                    //}
+                    //else {
+                    //    unreadalertcountspan.innerText = unreadcount;
+                    //}
+
+                    //console.log(data);
+                }
+            });
+        }
+
+        function clearInterfaceSettings() {
+            clearAllViewCookies();
+            toggle(document.getElementById('profile-drop-down'));
+            alert('Interface settings cleared');
+        }
+
+        $(function () {
+            let pausewindowinterval = setInterval(function () {
+                if (appframeworkprepared) {
+                    clearInterval(pausewindowinterval);
+                    pauseWindow();
+                    setTimeout(unpauseWindow, 5000);
+                }
+            }, 200);
+
+            let markallalertscheckbox = document.getElementById('markallalertscheckbox');
+            markallalertscheckbox.onchange = function () {
+                setTimeout(function () {
+                    //debugger;
+                    let tickedalertcheckboxes = document.querySelectorAll('.markalertcheckbox');
+                    for (let i = 0; i < tickedalertcheckboxes.length; i++) {
+                        let checkbox = tickedalertcheckboxes[i];
+                        checkbox.checked = markallalertscheckbox.checked;
+                    }
+                })
+            }
+
+            let markallalertsreadbutton = document.getElementById('markallalertsreadbutton');
+            markallalertsreadbutton.addEventListener('click', function () {
+                let tickedalertcheckboxes = document.querySelectorAll('.markalertcheckbox');
+                let alertids = [];
+                for (let i = 0; i < tickedalertcheckboxes.length; i++) {
+                    let checkbox = tickedalertcheckboxes[i];
+                    if (checkbox.checked) {
+                        alertids.push(checkbox.getAttribute('alertid'));
+                    }
+                }
+                markAlertsRead(alertids, true);
+            });
+
+            let markallalertsunreadbutton = document.getElementById('markallalertsunreadbutton');
+            markallalertsunreadbutton.addEventListener('click', function () {
+                let tickedalertcheckboxes = document.querySelectorAll('.markalertcheckbox');
+                let alertids = [];
+                for (let i = 0; i < tickedalertcheckboxes.length; i++) {
+                    let checkbox = tickedalertcheckboxes[i];
+                    if (checkbox.checked) {
+                        alertids.push(checkbox.getAttribute('alertid'));
+                    }
+                }
+                markAlertsRead(alertids, false);
+            });
+
+            let deleteallalertsbutton = document.getElementById('deleteallalertsbutton');
+            deleteallalertsbutton.addEventListener('click', function () {
+                let tickedalertcheckboxes = document.querySelectorAll('.markalertcheckbox');
+                let alertids = [];
+                for (let i = 0; i < tickedalertcheckboxes.length; i++) {
+                    let checkbox = tickedalertcheckboxes[i];
+                    if (checkbox.checked) {
+                        alertids.push(checkbox.getAttribute('alertid'));
+                    }
+                }
+                if (confirm('Are you sure you want to delete all marked alerts')) {
+                    deleteAlert(alertids);
+                }
+            });
+
+            getAlerts();
+
+            if (debug) {
+                setInterval(getAlerts, 60000);
+            }
+            else {
+                setInterval(getAlerts, 10000);
+            }
+
+            setLoadingDivSize();
+            setInterval(function () {
+                if (windowPaused()) {
+                    setLoadingDivSize();
+                }
+            }, 1000);
+
+            window.addEventListener("resize", setLoadingDivSize);
+
+            setInterval(function () {
+                let loadingdiv = document.getElementById(pauseoverlayid);
+
+                let percentage = loadingdiv.getAttribute("progress");
+
+                let loadingtext = loadingdiv.getAttribute("progresstext");
+                if (!loadingtext) {
+                    loadingtext = "Loading...";
+                }
+
+                let percentageint = parseInt(percentage);
+
+                if (percentageint == 0 || !percentage) {
+                    percentage = "";
+                }
+                else {
+                    if (percentageint < 10) {
+                        percentage = "0" + percentageint.toString();
+                    }
+                    else if (percentageint > 99) {
+                        //console.log(percentage);
+                        percentage = 99;
+                    }
+                    else {
+                        percentage = percentageint.toString();
+                    }
+                    percentage = percentage + "%";
+                }
+                let loadingpercentagespan = document.getElementById("loadingpercentagespan");
+                loadingpercentagespan.innerText = percentage;
+                let loadingtextspan = document.getElementById("loadingtextspan");
+                loadingtextspan.innerText = loadingtext;
+            }, 1000);
+
+            let setclearinfologclassinterval = setInterval(function () {
+                let clearinfologbutton = document.getElementById("clearinfologbutton");
+                if (clearinfologbutton) {
+                    clearTimeout(setclearinfologclassinterval);
+                    $(clearinfologbutton).addClass("fa");
+                    $(clearinfologbutton).addClass("fa-close");
+                }
+            }, 50);
+
+            //let alertbutton = document.getElementById('alert');
+            //alertbutton.addEventListener('click', function () {
+            //    callHook('alerttoggle');
+            //});
+
+            //let alertdiv = document.getElementById('alertdiv');
+            ////$(alertdiv).css();
+
+            ////debugger;
+            //registerHook("alerttoggle", function () {
+            //    //debugger;
+            //    closeHamburgerIfMobile();
+            //    if (alertdiv.hasAttribute('visible')) {
+            //        alertdiv.removeAttribute('visible');
+            //    }
+            //    else {
+            //        alertdiv.setAttribute('visible', '');
+            //    }
+            //});
+        });
+    </script>
+
+</head>
+<body>
+    <header>
+        <div id="header-left">
+            <a href="#" id="desktop-menu"><i class="fa fa-bars menuToggler adjustParentContainerWidth" menuElement="content-left"></i></a>
+            @*<a href="#" id="mobile-menu"><i class="fa fa-bars menuToggler" menuElement='content-left'></i></a>*@
+            <h1>@System.Web.Configuration.WebConfigurationManager.AppSettings["ApplicationName"]<sup>&reg;</sup></h1>
+        </div><!-- end header left div -->
+        <div id="header-right">
+            <div id="profile-settings">
+                <p class="menuToggler clickable" menuElement="profile-drop-down">@Session["name"]<span class="drop-down-btn"><i class="fa fa-angle-down menuToggler" menuElement="profile-drop-down"></i></span></p>
+                <div id="profile-drop-down" class="overlayMenu" style="display: none;">
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="changePassword()"><i class="fa fa-gear"></i>change password</a></li>
+                        @*<li><a href="javascript:void(0)" onclick="setColorScheme()"><i class="fa fa-clone"></i>change colour scheme</a></li>*@
+                        <li><a href="javascript:void(0)" onclick="clearInterfaceSettings()"><i class="fa fa-eraser"></i>clear interface settings</a></li>
+                        <li><a href="~/Home/Logout"><i class="fa fa-power-off"></i>logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="notification">
+                <div id="notify-btn">
+                    <i class="fa fa-bell menuToggler" menuElement="notification-details"></i>
+                    <span id="notify-count" class="menuToggler" menuElement="notification-details"></span>
+                </div>
+                <div id="notification-details" class="overlayMenu" style="display: none;">
+                    <div class="notification-heading">
+                        <div class="notification-heading-left">
+                            <input type="checkbox" id="markallalertscheckbox" /> |
+                            <button id="markallalertsreadbutton">Mark all Read</button> |
+                            <button id="markallalertsunreadbutton">Mark all unread</button>
+                        </div>
+                        <div class="notification-heading-right">
+                            <button id="deleteallalertsbutton"><span><i class="fa fa-trash"></i></span>Delete all</button>
+                        </div>
+                    </div><!-- end notification heading here -->
+                    <div id="notification-body">
+                    </div>
+                </div><!-- end notification details here -->
+            </div><!-- end notification div here -->
+            <div id="company-name">
+                <h1><span id="company-name-value" class="menuToggler clickable" menuElement="company-list">@ViewBag.CurrentCompany</span><i class="fa fa-angle-down menuToggler" menuElement="company-list"></i></h1>
+                <div id="company-list" class="overlayMenu" style="display: none">
+                    <ul>
+                        @{
+                            var companies = ViewBag.Companies;
+                        }
+                        @foreach (var company in companies)
+                        {
+                            <li><a href="javascript:void(0)" onclick="changeCompany('@company.CompanyID')">@company.CompanyID</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div><!-- end header-right div -->
+    </header>
+    <div id="content">
+        <div id="content-left">
+            <iframe id="nav-iframe" style="width:100%; height:100%"></iframe>
+        </div>
+        <div class="content-right" id="appcontainer">
+            <div id="dashboardreports" style="width: 100%; height: 100%; top: 0px; opacity: 1; position: absolute; z-index: 6; display: flex; flex-flow: column; display:none"></div>
+            <div id="infologdiv" class="infologdiv"></div>
+        </div>
+    </div>
+
+    <div id="loadingdiv" style="opacity:0.5; background-color:white; overflow:hidden; height:100vh">
+        <img id="loadingimage" src="~/Content/loading3.gif" style="position: absolute" />
+        <span id="loadingpercentagespan" style="position: absolute; font-size: 90px; width:100%; text-align:center">&nbsp;&nbsp;</span>
+        <span id="loadingtextspan" style="position: absolute; font-size: 30px; width:100%; text-align:center">Loading...</span>
+    </div>
+    <script type="text/javascript" src="~/js/formalScript.js"></script>
+</body>
+</html>

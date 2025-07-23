@@ -1,0 +1,63 @@
+﻿ul:not([id])
+{
+    /*padding-left: 5px !important;
+    -webkit-padding-start: 40px;*/
+}
+
+#search {
+    width: calc(100% - 20px);
+    margin: 10px;
+    margin-bottom: -5px;
+}
+
+ul {
+    padding-left: 0px;
+    -webkit-padding-start: 15px;
+}
+
+ul li .fa {
+    width: 20px;
+    float: left;
+    line-height: 20px;
+    display: inline-block;
+}
+
+ul li span {
+    display: inline-block;
+    width: calc(100% - 20px);
+    /*color: #717171*/
+}
+
+span:hover {
+    /*text-decoration:underline*/
+}
+
+li {
+    text-transform: capitalize;
+    font-weight: bold
+}
+
+a:hover {
+    background: var(--secondary-background-color)
+}
+
+.menu-link-span {
+    margin-top:2px;
+    padding-right:5px;
+}
+
+.fa-folder-open-o {
+    color:brown
+}
+
+.form {
+    color: steelblue
+}
+
+.runnable {
+    color: green
+}
+
+.report {
+    color: indianred
+}

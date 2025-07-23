@@ -1,0 +1,13 @@
+﻿#messageboxbuttons {
+    position:absolute;
+    bottom:10px;
+    left:5px;
+}
+
+#messageboxtext {
+    padding:10px
+}
+
+.dialogbutton {
+    margin-left:5px
+}
