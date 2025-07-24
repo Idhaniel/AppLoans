@@ -109,6 +109,7 @@ namespace AppEntities
             Navigation.RootMenu.Children.Add(new NavigationMenu("Investors Onboarding").
                 Children.Add(new NavigationMenu[] { 
                     new NavigationMenu("Register Investor",typeof(InvestorsRegistration)),
+                    new NavigationMenu("Investment Interest Tiers", typeof(InvestmentInterestTier)),
                 }));
 
             Navigation.RootMenu.Children.Add(new NavigationMenu("Main Menu")
