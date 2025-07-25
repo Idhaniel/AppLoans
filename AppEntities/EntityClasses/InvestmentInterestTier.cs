@@ -20,11 +20,10 @@ namespace AppEntities.EntityClasses
         protected override void setupEntityInfo()
         {
             FieldInfoList["TierID"] = new FieldInfo(true, true, true, "Tier ID", FormDataType.String);
-            FieldInfoList["MinAmount"] = new FieldInfo(true, true, true, "Minimum Amount", FormDataType.Real);
-            FieldInfoList["MaxAmount"] = new FieldInfo(true, true, true, "Maximum Amount", FormDataType.Real);
+            FieldInfoList["MinLockInDays"] = new FieldInfo(true, true, true, "Minimum Days Locked", FormDataType.Integer);
+            //FieldInfoList["MaxAmount"] = new FieldInfo(true, true, true, "Maximum Amount", FormDataType.Real);
             FieldInfoList["InterestRate"] = new FieldInfo(true, true, true, "Interest Rate", FormDataType.Real);
-            //FieldInfoList["AnnualInterestRate"] = new FieldInfo(true, true, true, "Interest Rate", FormDataType.Real);
-            //FieldInfoList["TierName"] = new FieldInfo(true, true, true, "Tier Name", FormDataType.String);
+            FieldInfoList["TierName"] = new FieldInfo(true, true, true, "Tier Name", FormDataType.String);
 
             TableInfo.KeyInfoList["TierID"] = new KeyInfo(KeyType.PrimaryField, "TierID");
             TableInfo.KeyInfoList["Unique"] = new KeyInfo(KeyType.Unique, "MinAmount", "MaxAmount");
